@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import pl.kukla.krzys.msscbreweryclient.web.model.BeerDto;
 
+import java.net.URI;
 import java.util.UUID;
 
 /**
@@ -29,6 +30,13 @@ public class BreweryClient {
 
     public BeerDto getBeerById(UUID uuid) {
         return restTemplate.getForObject(apiHost + BEER_PATH_VI + uuid.toString(), BeerDto.class);
+    }
+
+    public URI saveNewBeer(BeerDto beerDto) {
+        //postForLocation returns back a location header
+        // and this method is going to be looking at response header for the value
+        return restTemplate.postForLocation(apiHost + BEER_PATH_VI, beerDto);
+//        return restTemplate.postForObject(apiHost + BEER_PATH_VI, beerDto, BeerDto.class);
     }
 
 }

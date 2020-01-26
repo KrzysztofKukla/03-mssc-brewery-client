@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import pl.kukla.krzys.msscbreweryclient.web.model.BeerDto;
 
+import java.net.URI;
 import java.util.UUID;
 
 /**
  * @author Krzysztof Kukla
  */
 @SpringBootTest
-class BreweryClientTest {
+class BreweryClientIT {
 
     @Autowired
     private BreweryClient breweryClient;
@@ -22,6 +23,23 @@ class BreweryClientTest {
         BeerDto beerDto = breweryClient.getBeerById(UUID.randomUUID());
 
         Assertions.assertNotNull(beerDto);
+    }
+
+    @Test
+    void saveNewBeer() throws Exception {
+        //given
+        BeerDto beerDto = BeerDto.builder()
+            .beerName("new first Beer")
+            .beerStyle("new beer style")
+            .upc(22222L)
+            .build();
+
+        //when
+        URI uri = breweryClient.saveNewBeer(beerDto);
+
+        //then
+        Assertions.assertNotNull(uri);
+        System.out.println(uri.toString());
     }
 
 }
