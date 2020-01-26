@@ -28,8 +28,8 @@ public class BreweryClient {
         this.restTemplate = restTemplateBuilder.build();
     }
 
-    public BeerDto getBeerById(UUID uuid) {
-        return restTemplate.getForObject(apiHost + BEER_PATH_VI + uuid.toString(), BeerDto.class);
+    public BeerDto getBeerById(UUID beerId) {
+        return restTemplate.getForObject(apiHost + BEER_PATH_VI + "{beerId}", BeerDto.class, beerId);
     }
 
     public URI saveNewBeer(BeerDto beerDto) {
@@ -37,6 +37,10 @@ public class BreweryClient {
         // and this method is going to be looking at response header for the value
         return restTemplate.postForLocation(apiHost + BEER_PATH_VI, beerDto);
 //        return restTemplate.postForObject(apiHost + BEER_PATH_VI, beerDto, BeerDto.class);
+    }
+
+    public void updateBeer(UUID beerId, BeerDto beerDto) {
+        restTemplate.put(apiHost + BEER_PATH_VI + "{beerId}", beerDto, beerId);
     }
 
 }

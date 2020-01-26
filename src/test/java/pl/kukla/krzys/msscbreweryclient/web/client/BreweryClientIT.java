@@ -42,4 +42,16 @@ class BreweryClientIT {
         System.out.println(uri.toString());
     }
 
+    @Test
+    void updateBeer() throws Exception {
+        //given
+        BeerDto beerDto = BeerDto.builder()
+            .beerName("new first Beer")
+            .beerStyle("new beer style")
+            .upc(22222L)
+            .build();
+
+        breweryClient.updateBeer(UUID.randomUUID(), beerDto);
+    }
+
 }
