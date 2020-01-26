@@ -43,4 +43,8 @@ public class BreweryClient {
         restTemplate.put(apiHost + BEER_PATH_VI + "{beerId}", beerDto, beerId);
     }
 
+    public void deleteBeer(UUID beerId) {
+        restTemplate.delete(apiHost + BEER_PATH_VI + "{beerId}", beerId);
+    }
+
 }
