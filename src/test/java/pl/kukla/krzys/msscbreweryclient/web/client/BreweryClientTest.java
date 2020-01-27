@@ -13,7 +13,7 @@ import java.util.UUID;
  * @author Krzysztof Kukla
  */
 @SpringBootTest
-class BreweryClientIT {
+class BreweryClientTest {
 
     @Autowired
     private BreweryClient breweryClient;
