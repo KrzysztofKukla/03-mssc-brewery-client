@@ -13,6 +13,9 @@ import java.util.UUID;
 /**
  * @author Krzysztof Kukla
  */
+//microservice can have many, many client connections
+//Brewery Client is automatically injected into RequestFactory
+// and then requestFactory is injected into RestTemplate
 @Component
 @ConfigurationProperties(value = "sfg.brewery", ignoreUnknownFields = false)
 public class BreweryClient {

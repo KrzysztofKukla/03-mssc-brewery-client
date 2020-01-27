@@ -13,6 +13,8 @@ import java.util.UUID;
 /**
  * @author Krzysztof Kukla
  */
+//Brewery Client is automatically injected into RequestFactory
+// and then requestFactory is injected into RestTemplate
 @Component
 @ConfigurationProperties("sfg.brewery")
 public class CustomerClient {
