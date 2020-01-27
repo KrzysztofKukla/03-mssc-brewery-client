@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
  * @author Krzysztof Kukla
  */
 // non-blocking NIO is essential of Reactive Programming
+//Netty is default client in Reactive Spring
 //this one ( non-blocking NIO RestTemplate ) of RestTemplateCustomizer is disable
 // we can have only one of them
 //@Component

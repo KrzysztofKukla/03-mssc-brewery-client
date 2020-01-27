@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * @author Krzysztof Kukla
  */
+//blocking-client
 @Component
 public class BlockingRestTemplateCustomizer implements RestTemplateCustomizer {
 
